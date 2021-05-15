@@ -1,0 +1,68 @@
+#Copy id_rsa.pub to authorized keys from hduser
+cat $HOME/.ssh/id_rsa.pub >> $HOME/.ssh/authorized_keys
+
+# disable ipv6
+net.ipv6.conf.all.disable_ipv6 = 1
+net.ipv6.conf.default.disable_ipv6 = 1
+net.ipv6.conf.lo.disable_ipv6 = 1
+
+Add the following lines at the end of the file bashrc file
+
+# -- HADOOP ENVIRONMENT VARIABLES START -- # 
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/ 
+export HADOOP_HOME=/usr/local/hadoop 
+export PATH=$PATH:$HADOOP_HOME/bin 
+export PATH=$PATH:$HADOOP_HOME/sbin 
+export HADOOP_MAPRED_HOME=$HADOOP_HOME 
+export HADOOP_COMMON_HOME=$HADOOP_HOME 
+export HADOOP_HDFS_HOME=$HADOOP_HOME 
+export YARN_HOME=${HADOOP_HOME} 
+export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native 
+export HADOOP_OPTS="-Djava.library.path=$HADOOP_HOME/lib" 
+export PATH=$PATH:/usr/local/hadoop/bin/ 
+export PDSH_RCMD_TYPE=ssh
+# -- HADOOP ENVIRONMENT VARIABLES END -- #
+
+hadoop-env.sh
+
+export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64/"
+
+core-site.xml
+
+<property>
+ <name>fs.default.name</name>
+ <value>hdfs://localhost:9000</value>
+</property>
+
+hdfs-site.xml
+
+<property> 
+ <name>dfs.replication</name> 
+ <value>1</value> 
+</property> 
+<property> 
+ <name>dfs.namenode.name.dir</name> 
+ <value>file:/usr/local/hadoop_tmp/hdfs/n­amenode</value> 
+</property> 
+<property> 
+ <name>dfs.datanode.data.dir</name> 
+ <value>file:/usr/local/hadoop_tmp/hdfs/d­atanode</value> 
+</property>
+
+yarn-site.xml
+
+<property>
+   <name>yarn.nodemanager.aux-services</name>
+   <value>mapreduce_shuffle</value>
+</property>
+<property>
+   <name>yarn.nodemanager.aux-services.mapreduce.shuffle.class</name>
+   <value>org.apache.hadoop.mapred.ShuffleHandler</value>
+</property>
+
+mapred-site.xml
+
+<property>
+   <name>mapreduce.framework.name</name>
+   <value>yarn </value>
+</property>

@@ -1,0 +1,8 @@
+https://www.exastax.com.tr/nesnelerin-interneti/nesnelerin-interneti-icin-gercek-zamanli-akan-veri-isleme/
+https://www.researchgate.net/search?q=akan%20veri
+https://scholar.google.com.tr/scholar?hl=tr&as_sdt=0%2C5&as_vis=1&q=streaming+data+&btnG=
+https://aws.amazon.com/tr/streaming-data/
+http://bilgisayarkavramlari.sadievrenseker.com/2012/03/31/veri-akis-madenciligi-data-stream-mining/
+
+pdf
+https://www.researchgate.net/publication/325209932_Architecture_for_Analysis_of_Streaming_Data
